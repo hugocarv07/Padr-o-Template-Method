@@ -31,7 +31,6 @@ public abstract class Paciente {
         this.nivelDor2 = nivelDor2;
     }
 
-    // Template Method: define o esqueleto do algoritmo e delega os passos variáveis às subclasses
     public final String verificarPrioridade() {
         float media = calcularMedia();
         if (media >= getLimitePrioridade()) {
@@ -40,7 +39,6 @@ public abstract class Paciente {
         return "Não prioritário";
     }
 
-    // Template Method: monta a descrição usando o passo getTipoPaciente() e o template acima
     public final String getInfo() {
         return getTipoPaciente() + "{" +
                 "prontuario=" + prontuario +
@@ -49,12 +47,10 @@ public abstract class Paciente {
                 '}';
     }
 
-    // Passo com implementação padrão (hook): as subclasses podem sobrescrever
     protected float calcularMedia() {
         return (nivelDor1 + nivelDor2) / 2;
     }
 
-    // Passos obrigatórios: cada subclasse define o seu
     protected abstract float getLimitePrioridade();
 
     protected abstract String getTipoPaciente();
